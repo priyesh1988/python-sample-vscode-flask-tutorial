@@ -31,7 +31,7 @@ stages:
               workingDirectory: $(System.DefaultWorkingDirectory)
               inlineScript: |
                 az group create -n flask-rg -l eastus
-                az appservice plan create -n flask-plan -g flask-rg --sku B1 --is-linux
+                az appservice plan create -n flask-plan -g flask-rg --sku F1 --is-linux
                 az webapp create -n flask-123 -g flask-rg -p flask-plan --runtime "PYTHON:3.11"
                 az webapp config set -n flask-123 -g flask-rg --startup-file "gunicorn --bind=0.0.0.0 --timeout 600 hello_app.webapp:app"
                 cd $(System.DefaultWorkingDirectory)
